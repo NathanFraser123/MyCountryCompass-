@@ -15,7 +15,7 @@ By completing this activity, you should be able to:
 * use evidence to identify a root cause;
 * connect multiple symptoms to a common underlying problem;
 * implement and verify a correction without patching individual examples.
-* 
+*
 ## Resources
 
 * Country Compass Repository: https://github.com/PROG7314-2026-EMDBN/CountryCompass
@@ -127,17 +127,19 @@ At least one of your tests should use a country or border that was not used whil
 
 ## Submission
 
-Submit:
+Claim repo: https://classroom50.org/EMKNDN/emkndn-prog7314-2026/assignments/countrycompass-challenge/accept
 
-* the corrected Android Studio project; and
-* your updated `README.md`.
+Submit in your repo:
+* the Android Studio project with the fix
+* your updated `README.md` outlining the fix
 
-Do not submit your API key or `local.properties`.
+> Do not submit your API key or `local.properties`.
+
+Fill in this survey: https://forms.cloud.microsoft/r/bAKej1Lbm5
 
 ## Reflection
 
 In no more than 100 words, add a short reflection to your `README.md` explaining:
-
 * what you initially thought was causing the problem;
 * what evidence changed or confirmed your thinking;
 * what you learnt about troubleshooting from the activity.
