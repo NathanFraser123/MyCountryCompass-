@@ -35,5 +35,5 @@ class CountryRepository {
         api.searchByName(query).data.objects
 
     suspend fun loadCountry(identifier: String): Country =
-        api.searchByName(identifier).data.objects.first()
+        api.getByCode(identifier).data.objects.first()
 }

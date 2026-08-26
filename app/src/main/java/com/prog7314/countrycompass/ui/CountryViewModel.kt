@@ -43,9 +43,9 @@ class CountryViewModel : ViewModel() {
 
     fun loadCountry(identifier: String) {
         viewModelScope.launch {
-            _detailState.value = DetailState.Loading
+            _detailState.value = DetailState.Loading // Reset state immediately
             _detailState.value = try {
-                DetailState.Success(repository.loadCountry(identifier))
+                DetailState.Success(repository.loadCountry(identifier.trim()))
             } catch (e: Exception) {
                 DetailState.Error(e.message ?: "Unable to load country")
             }

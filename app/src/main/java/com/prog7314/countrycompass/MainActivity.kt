@@ -32,8 +32,8 @@ fun CountryCompassApp(vm: CountryViewModel = viewModel()) {
     val nav = rememberNavController()
     NavHost(navController = nav, startDestination = "search") {
         composable("search") {
-            SearchScreen(vm) { country, query ->
-                nav.navigate("detail/${android.net.Uri.encode(query)}")
+            SearchScreen(vm) { country ->
+                nav.navigate("detail/${country.codes.alpha3}")
             }
         }
         composable(
@@ -49,7 +49,10 @@ fun CountryCompassApp(vm: CountryViewModel = viewModel()) {
 }
 
 @Composable
-private fun SearchScreen(vm: CountryViewModel,onCountry: (Country, String) -> Unit) {
+private fun SearchScreen(
+    vm: CountryViewModel,
+    onCountry: (Country) -> Unit
+    ) {
     var query by remember { mutableStateOf("") }
     val state by vm.searchState.collectAsStateWithLifecycle()
     Column(Modifier.fillMaxSize().padding(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
@@ -63,7 +66,7 @@ private fun SearchScreen(vm: CountryViewModel,onCountry: (Country, String) -> Un
             is SearchState.Error -> Text(current.message)
             is SearchState.Success -> LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 items(current.countries, key = { it.codes.alpha3 }) { country ->
-                    Card(Modifier.fillMaxWidth().clickable { onCountry(country, query) }) {
+                    Card(Modifier.fillMaxWidth().clickable { onCountry(country) }) { // Now matches!
                         Column(Modifier.padding(16.dp)) {
                             Text(country.names.common, fontWeight = FontWeight.Bold)
                             Text(country.names.official)
